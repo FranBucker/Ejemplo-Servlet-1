@@ -21,10 +21,17 @@ public class MyServlet extends HttpServlet {
 		out.println("<html>");
 		out.println("<head><title>Ejemplo HTML desde Servlet</title></head>");
 		out.println("<body>");
-		out.println("<h1>Ejemplo Servlet</h1>");
-		out.println("<p>Este es un ejemplo en el curso de Java para generar HTML desde un Servlet.</p>");
-		out.println("<p><a href=\"/myServlet2\">Vamos al otro Servlet</a></p>");
-		out.println("</body></html>");
+		out.println("<h1>Ejemplo Servlet con Formulario</h1>");
+		out.println("<p>Este es un ejemplo en el curso de Java para generar HTML desde un Servlet enviando datos desde un formulario.</p>");
+        /* out.println("<p><a href=\"/myServlet2\">Vamos al otro Servlet</a></p>"); */
+
+		out.println("<form action=\"/myServlet2\">");
+		out.println("<label for=\"fname\">Nombre:</label><br>");
+		out.println("<input type=\"text\" id=\"fname\" name=\"fname\"><br>");
+		out.println("<input type=\"submit\" value=\"Submit\">");
+
+		out.println("</form></body></html>");
+
 	}
 
 }
