@@ -21,7 +21,8 @@ public class MyServlet2 extends HttpServlet {
 
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
-		String nombre = request.getParameter("fname");
+		String nombreForm = request.getParameter("nombre");
+		String apellidoForm = request.getParameter("apellido");
 		LocalDateTime fechaHoraActual = LocalDateTime.now();
 		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 		String fechaHoraFormateada = fechaHoraActual.format(formato);
@@ -31,7 +32,7 @@ public class MyServlet2 extends HttpServlet {
 		out.println("<head><title>Ejemplo HTML desde Servlet</title></head>");
 		out.println("<body>");
 		out.println("<h1>Bienvenido ");
-		out.println(nombre);
+		out.println(nombreForm.concat(apellidoForm));
 		out.println("!!</h1>");
 		out.println(fechaHoraFormateada);
 	}
