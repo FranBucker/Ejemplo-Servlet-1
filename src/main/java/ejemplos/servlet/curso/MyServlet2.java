@@ -3,11 +3,13 @@ package ejemplos.servlet.curso;
 import jdk.vm.ci.meta.Local;
 import sun.util.calendar.BaseCalendar;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.core.Request;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
@@ -26,15 +28,12 @@ public class MyServlet2 extends HttpServlet {
 		LocalDateTime fechaHoraActual = LocalDateTime.now();
 		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 		String fechaHoraFormateada = fechaHoraActual.format(formato);
+		request.setAttribute("nombreJSP", nombreForm);
+		request.setAttribute("apellidoJSP", apellidoForm);
+		request.setAttribute("fechaJSP", fechaHoraFormateada);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("bienvenida.jsp");
 
-		// send HTML page to client
-		out.println("<html>");
-		out.println("<head><title>Ejemplo HTML desde Servlet</title></head>");
-		out.println("<body>");
-		out.println("<h1>Bienvenido ");
-		out.println(nombreForm.concat(apellidoForm));
-		out.println("!!</h1>");
-		out.println(fechaHoraFormateada);
+		dispatcher.forward(request, response);
 	}
 
 }
